@@ -1,8 +1,14 @@
-import React from 'react'
+import React from 'react';
+import './Card.css';
 
 const Card = () => {
   return (
-    <div>Card</div>
+    <div className="card">
+        <h3>Date</h3>
+        <div>Icon</div>
+        <p>Temp: </p>
+        <p>Humidity: </p>
+    </div>
   )
 }
 

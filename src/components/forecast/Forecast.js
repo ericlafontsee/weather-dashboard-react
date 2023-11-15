@@ -1,4 +1,5 @@
 import React from "react";
+import "./Forecast.css";
 import Card from "../../UI/card/Card";
 import CurrentWeather from "../currentWeather/CurrentWeather";
 
