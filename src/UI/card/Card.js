@@ -17,45 +17,43 @@ const Card = ({ forecast }) => {
 
   const getFiveDayWeather = () => {
     if (forecast) {
-      const presentWeather = forecast.main;
-      getFormattedDate();
-      getWeatherIcon();
+      const { main, weather, dt_txt } = forecast;
+      
+      getFormattedDate(dt_txt);
+      getWeatherIcon(weather);
 
-      setTemp(Math.round((presentWeather.temp - 273.15) * 1.8 + 32));
-
-      setHumidity(presentWeather.humidity);
+      setTemp(Math.round((main.temp - 273.15) * 1.8 + 32));
+      setHumidity(main.humidity);
     }
   };
 
-  const getFormattedDate = () => {
-    // Input date string
-    const inputDateString = "2023-12-05 15:00:00";
+  const getFormattedDate = (inputDateString) => {
+    // Use the input date string directly without creating a new Date object
+    const formattedDate = new Date(inputDateString).toLocaleDateString(
+      "en-US",
+      {
+        month: "numeric",
+        day: "numeric",
+        year: "numeric"
+      }
+    );
 
-    // Create a new Date object using the input date string
-    const inputDate = new Date(inputDateString);
-
-    // Get the month, day, and year components
-    const month = inputDate.getMonth() + 1; // Months are zero-based, so we add 1
-    const day = inputDate.getDate();
-    const year = inputDate.getFullYear();
-
-    // Format the date as MM/DD/YYYY
-    const formattedDate = `${month}/${day}/${year}`;
     setDate(formattedDate);
   };
 
-  const getWeatherIcon = () => {
-    const iconData = forecast.weather[0];
-    const iconURL = `https://openweathermap.org/img/wn/${iconData.icon}@2x.png`;
+  const getWeatherIcon = (iconData) => {
+    const iconURL = `https://openweathermap.org/img/wn/${iconData[0].icon}@2x.png`;
     const iconAltText = iconData.description;
     setWeatherIcon(iconURL);
     setWeatherIconAltText(iconAltText);
-  }
+  };
 
   return (
     <div className="card">
       <h3>{date}</h3>
-      <div><img src={weatherIcon} alt={weatherIconAltText}/></div>
+      <div>
+        <img src={weatherIcon} alt={weatherIconAltText} />
+      </div>
       <p>Temp: {temp}</p>
       <p>Humidity: {humidity}%</p>
     </div>
