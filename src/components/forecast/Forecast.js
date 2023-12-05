@@ -32,12 +32,10 @@ const Forecast = ({ lat, lon }) => {
       <div className="forecast__container-cards">
       {weather.list && weather.list.map((forecastItem, index) => {
           if (forecastItem.dt_txt.indexOf("15:00:00") !== -1) {
-            console.log("Card");
-            return <Card key={index} weather={forecastItem}/>;
+            return <Card key={index} forecast={forecastItem}/>;
           }
           return null; // If condition is not met, return null
         })}
-        {weather.list.length === 0 && <Card />} {/* Render default card if there are no cards */}
       </div>
     </div>
   );
