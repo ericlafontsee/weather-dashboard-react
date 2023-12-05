@@ -12,10 +12,10 @@ function App() {
   // Click event on search button will populate page with input city's weather
   const submitHandler = (event) => {
     event.preventDefault();
-    zip === "" ? alert("Enter a zip code!") : fetchCoordinates(zip); 
+    zip === "" ? alert("Enter a zip code!") : fetchCoordinates(); 
   };
 
-  const fetchCoordinates = (zip) => {
+  const fetchCoordinates = () => {
     let APIKey = "205e65f3bbbf65a0b6de249409614a50";
     let queryURL = `http://api.openweathermap.org/geo/1.0/zip?zip=${zip}&appid=${APIKey}`;
 

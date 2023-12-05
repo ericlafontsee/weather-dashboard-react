@@ -8,8 +8,6 @@ const Card = ({ forecast }) => {
   const [weatherIcon, setWeatherIcon] = useState();
   const [weatherIconAltText, setWeatherIconAltText] = useState();
 
-  console.log("CARD: ", forecast);
-
   useEffect(() => {
     // This block will be executed after the state has been updated
     getFiveDayWeather();
