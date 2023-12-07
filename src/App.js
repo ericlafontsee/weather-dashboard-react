@@ -60,6 +60,7 @@ function App() {
           onSubmit={submitHandler}
           onZipChange={zipChangeHandler}
           zip={zip}
+          searchedZips={searchedZips}
         />
         <Forecast lat={lat} lon={lon} />
       </main>

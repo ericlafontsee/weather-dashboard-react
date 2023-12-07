@@ -1,4 +1,5 @@
 import "./Search.css";
+import SearchHistory from "./SearchHistory";
 
 const Search = (props) => {
   return (
@@ -16,6 +17,10 @@ const Search = (props) => {
           <i class="fas fa-search-location"></i>
         </button>
       </form>
+      {props.searchedZips &&
+        props.searchedZips.map((zip, index) => {
+          return <SearchHistory key={index} searchedZips={zip} />;
+        })}
     </div>
   );
 };
