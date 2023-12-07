@@ -12,7 +12,7 @@ const Search = (props) => {
           value={props.zip}
           onChange={props.onZipChange}
         />
-        <button id="searchBtn" type="submit" class="">
+        <button id="searchBtn" type="submit">
           <i class="fas fa-search-location"></i>
         </button>
       </form>
